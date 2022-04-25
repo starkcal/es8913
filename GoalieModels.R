@@ -205,7 +205,7 @@ xSaveGLM <-
 # Perform stepwise AIC to minimize AIC
 xSaveGLM <- step(xSaveGLM)
 
-# VIF
+# VIF for multicolinearity
 vif(xSaveGLM)
 
 # Model Plots
@@ -213,7 +213,7 @@ plot(xSaveGLM)
 
 # Summarize model results
 summary(xSaveGLM) #or
-xSavesGLM_summary <- broom::tidy(xSaveGLM) #and
+xSavesGLM_summary <- broom::tidy(xSaveGLM, conf.int = TRUE, conf.level = 0.95, exponentiate = T) #and
 broom::glance(xSaveGLM)
 
 # Create ROC area under curve plot
@@ -329,12 +329,15 @@ xReboundGLM <-
 # Perform stepwise function to minimize AIC
 xReboundGLM <- step(xReboundGLM)
 
+# VIF for multicolinearity
+vif(xReboundGLM)
+
 # Plot the model results
 plot(xReboundGLM)
 
 # Summarize the model results
 summary(xReboundGLM) # or
-xReboundGLM_summary <- broom::tidy(xReboundGLM) #and
+xReboundGLM_summary <- broom::tidy(xReboundGLM, conf.int = TRUE, conf.level = 0.95, exponentiate = T) #and
 broom::glance(xReboundGLM)
 
 # Plot ROC area under the curve
@@ -407,7 +410,7 @@ xR_22_stats <- SoG_22 %>%
 # Check summary of new statistics
 summary(xR_22_stats)
 
-# xReboSave Model -----------------------------------------------------------
+# xReboSave Model Creation -----------------------------------------------------------
 
 # Create training data by selecting on rebound shots on goal
 xReboSave_training <-
@@ -430,12 +433,15 @@ xReboSaveGLM <-
 # Perform stepwise function to minimize AIC
 xReboSaveGLM <- step(xReboSaveGLM)
 
+# VIF for multicolinearity
+vif(xReboSaveGLM)
+
 # Plot the model
 plot(xReboSaveGLM)
 
 # Summarize the model results
 summary(xReboSaveGLM) # or
-xReboSaveGLM_summary <- broom::tidy(xReboSaveGLM) #and
+xReboSaveGLM_summary <- broom::tidy(xReboSaveGLM, conf.int = TRUE, conf.level = 0.95, exponentiate = T) #and
 broom::glance(xReboSaveGLM)
 
 # Plot ROC area under the curve
